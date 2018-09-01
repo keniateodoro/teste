@@ -1,0 +1,70 @@
+Roteiro de atividade:
+Objetivo: avaliar com base em uma amostra de 50 plantas, com significância de 0,05 se pode ser afirmado que
+o volume médio dos frutos de uma plantação pode ser considerado 15, sabendo que o desvio padrão da população é 3
+e que esta variável possui uma distribuição normal na população.
+
+Utilize os seguintes comandos no R para executar o teste de média:
+
+1- Importe os dados que estão no arquivo dados.csv, anexo:
+
+dados <- read.csv(file.choose(),sep=";",header=T)
+
+- o parâmetro file.choose() vai fazer aparecer uma caixa de diálogo para escolher o arquivo
+- o parâmetro sep=";", diz que o separador das colunas é ";". Para observar isso, tente abrir o arquivo
+dados.csv no bloco de notas
+- o parâmetro header=T diz que a primeira linha do arquivo é o cabeçalho
+
+2- Para visualizar se os dados foram importados corretamente, utilize o comando:
+
+head(dados)
+
+3- Escolha só a coluna Volume e armazene em uma variável:
+
+volume <- dados$Volume
+
+4- Calcule a média do volume
+
+media <- mean(volume)
+
+-Observação: a partir do passo, existem explicações mais detalhadas e fórmulas utilizadas em:
+http://nbcgib.uesc.br/lec/professores/ivan?layout=edit&id=142
+
+5- Coloque os valores conhecidos da fórmula em variáveis. Este passo vai tornar os comandos que vão seguir genéricos
+e você vai poder reutilizar os mesmos comandos em outros problemas ou outras amostras, alterando somente o valor
+das variáveis.
+
+mu0 = 15
+sigma = 3
+n = 50
+Z = (media - mu0)/(sigma/sqrt(n))
+
+6- Digite Z e pressione enter, você deve observar o seguinte valor da estatística:
+
+-2.003469
+
+7- Agora será calculada a região crítica, começando pela definição do nível de significância:
+
+alpha = 0.05
+alpha_2 = alpha/2
+
+- está sendo utilizado alpha/2 porque o teste é bilateral.
+
+8- Calculo da região crítica:
+
+Zalpha_2 = abs(qnorm(alpha_2))
+
+- A função q-norm vai calcular o delimitador da região crítica
+
+9- Digite Zalpha_2 e pressione enter para ver este valor crítico. O resultado deve ser:
+
+1.959964
+
+10- Se quiser utilizar o p-valor, use a fórmula:
+
+pvalor = pnorm(Z)*2
+
+11- Digite pvalor e pressione enter para ver o resultado:
+
+0.04512695
+
+Alteração realizada
